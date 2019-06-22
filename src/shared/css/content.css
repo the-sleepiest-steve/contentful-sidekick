@@ -1,13 +1,13 @@
-.csk-element {
+.msqc-element {
   outline: 1px dashed #00a7f7;
   cursor: pointer;
 }
-.csk-element:hover {
+.msqc-element:hover {
   outline: 1px solid #00a7f7;
   box-shadow: 0 0 0 4px rgba(0, 167, 247, 0.3);
 }
 
-.csk-element:hover:before {
+.msqc-element:hover:before {
   content: 'EDIT';
   position: absolute;
   padding: 2px 5px;

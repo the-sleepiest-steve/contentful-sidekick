@@ -1,36 +1,24 @@
-# Contetnful Sidekick
-Chrome Extension that helps end users of Contentful find the content they want to edit quickly on highly nested pages that use alot of different peices of content to make up the page.
+# MSQC Contetnful Sidekick
+Is a fork of the Contentful Sidekick Chrome Extension that helps end users of Contentful find the content they want to edit quickly on highly nested pages that use alot of different peices of content to make up the page. It is customized to work with MSQC's specific Contentful configuration and structure. If you are looking at forking this you might have better luck with the origional.
 
 ## Download
 You can download the released version on the [Chrome Web Store](https://chrome.google.com/webstore/detail/contentful-sidekick/cmheemjjmooepppggclooeejginffobo).<br>
 **IMPORTANT: before you use the sidekick you must first enable it by adding html attributes to your page**
 
 ## Enabling for your site
-The Contentful Sidekick uses a data attribute on the element you want to enable editing for. Typically this is placed on an elment that corrisponds to a different content model.
+The Contentful Sidekick uses Two data attributes on the elements you want to enable editing for. Typically this is placed on an elment that corrisponds to a different content model. Because MSQC mixes Spaces we need to add the Space ID to each content model to enable building the correct link for each entry.
 
-### Add this to your top meta tags
-```html
-<meta name="contentful_space" content="<space-id>">
-<meta name="contentful_environment" content="<environment>">
-```
 ### Add this to your HTML element
-**Tip**: A good practice is to only add these tags on a staging or preview environment
+**Tip**: A good practice is to only add these tags on a staging or preview environment... But... We are going to skip leveraging the environment variable since we currently don't utilize it.
 ```
-data-csk-entry-id="${entry.sys.id}"
+<div class="contentful-module full-text" data-msqc-entry-id="{{$entryId}}" data-msqc-space-id="{{$entryId}}">
 ```
-Example:
+Example of a Blade partial for a specific Content Model:
 
 ```html
-<div class="module-panel" data-csk-entry-id="js7sjsushs63h36shsgd63g">
-  <div class="panel-hsc" data-csk-entry-id="jsshs7j2y2hhgsysjjdkkfie">
-    ...
-  </div>
-
-  <div class="panel-hsc" data-csk-entry-id="aksisuw7whsywhsywi28282">
-    ...
-    <div class="another-content-model" data-csk-entry-id="pow982kj282mm2hjsd72nwh">
-      ...
-    </div>
+<div class="example-contentful-module example-content-model-text" data-msqc-entry-id="{{$entryId}}" data-msqc-space-id="{{$entryId}}">
+  <div class="{{$example2}} size"@if(isset($example)) id="{{$example}}"@endif>
+    {!! $example3 !!}
   </div>
 </div>
 ```
