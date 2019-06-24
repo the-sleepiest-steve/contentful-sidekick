@@ -10,9 +10,8 @@
       "identity",
       "storage",
       "tabs",
-      "http://*/*",
-      "https://*/*",
-      "*://*/*"
+      "*://*.msqc.com/*",
+      "*://*.missouriquiltco.com/*"
     ],
     "browser_action": {
       "default_icon": "img/icon-128.png",
@@ -20,7 +19,7 @@
     },
     "content_scripts": [
       {
-        "matches": ["http://*/*", "https://*/*"],
+        "matches": ["*://*.msqc.com/*", "*://*.missouriquiltco.com/*"],
         "js": ["js/vendor.js", "js/content.js"],
         "css": ["css/content.css"]
       }
